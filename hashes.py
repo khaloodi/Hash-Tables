@@ -4,7 +4,9 @@ import bcrypt
 
 key = b"hello"
 
-print(hashlib.sha256(key).hexdigest())
+sha256key = hashlib.sha256(key).hexdigest()
+
+# print(sha256key)
 
 
 def djb2(key):
@@ -15,3 +17,11 @@ def djb2(key):
 
     for char in key:
         hash_value = ((hash_value << 5) + hash_value) + char
+    return hash_value
+
+# print(djb2(key))
+
+djb2key = djb2(key) 
+
+# print(f"sha256 key: {int(sha256key) % 10}")
+print(f"djb2key: {djb2key % 10}")
